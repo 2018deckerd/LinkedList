@@ -54,7 +54,7 @@ public class LinkedList {
 	 */
 	public Node findNode(String data) {
 		Node pointer = head;
-		while (pointer != null) {
+		while (pointer.next != null) {
 			if ((pointer.record).equals(data)) {
 				return pointer;
 			} 
@@ -71,13 +71,13 @@ public class LinkedList {
 		if (trash == null) {
 			
 		} else {
-		  Node trashNode = head;
-		  while (trashNode.next != null) {
-			if (trashNode.record.equals(trash.record)) {
-				trash = trashNode.next;
+		  Node pointer = head;
+		  while (true) {
+			if (pointer.next == trash) {
+				pointer.next = trash.next;
 				break;
 			} else {	
-				trashNode = trashNode.next;
+				pointer = pointer.next;
 			}
 		}
 	}
@@ -88,15 +88,22 @@ public class LinkedList {
 	 * This method should create a new node and insert it at the end of the list.
 	 */
 	public void insertLast(String data) {
+		Node pointer = head;
 		Node newNode = new Node();
-		newNode.next = head;
-		while(true) {
-			if (newNode.next == null) {
+		  while(true) {
+			if (head == null) {
 				newNode.record = data;
-				newNode.next = null; 
+				newNode.next = head;
+				head = newNode;
 				break;
+			} else if (pointer.next == null) {
+				newNode.record = data;
+				pointer.next = newNode;
+				newNode.next = null;
+				break;
+			} else {
+			pointer = pointer.next;
 			}
-			newNode = newNode.next;
 	}
 	}
 	
@@ -106,15 +113,23 @@ public class LinkedList {
 	 */
 	public void deleteLast() {
 		Node pointer = head;
-		if (pointer == null) {
+		Node pointerSecond = head;
+		if (head == null) {
 			
 		} else {
+			// advances pointer to the end of the list
+		  while (pointer.next != null) {
+			  pointer = pointer.next;
+		  }
+		  while (pointerSecond.next != pointer.next) {
+			  pointerSecond = pointerSecond.next;
+		  }
 			if (pointer.next == null) {
-				pointer = null;
-			}
-			pointer = pointer.next;
+				pointerSecond.next = pointer;
+				pointer.next = null;
 		}
 	}
+}
 	
 	/*
 	 * This method transverses the list and prints out the record in each node.

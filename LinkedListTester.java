@@ -26,7 +26,7 @@ public class LinkedListTester {
 		System.out.println("bear -> alligator\n\n");
 		
 		LinkedList list2 = new LinkedList();
-		list2.insertLast("Alice");
+
 		list2.insertFirst("Bob");
 		list2.insertFirst("Candace");
 		list2.insertLast("David");
