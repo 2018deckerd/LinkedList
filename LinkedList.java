@@ -39,12 +39,19 @@ public class LinkedList {
 	public void insertAfter(String data, Node after) {
 		if (after == null) {
 			
-		} else if (data == null) {
-
 		} else {
 			Node createNode = new Node();
-			createNode.record = data;
+			Node pointer = head;
+			while (true) {
+				if (pointer == after.next) {
+				break;
+				} else {
+					pointer = pointer.next;
+				}
+			}
+			createNode.next = after.next;
 			after.next = createNode;
+			createNode.record = data;
 		}
 	}
 	
@@ -73,7 +80,7 @@ public class LinkedList {
 		} else {
 		  Node pointer = head;
 		  while (true) {
-			if (pointer.next == trash) {
+			if (pointer.next.equals(trash)) {
 				pointer.next = trash.next;
 				break;
 			} else {	
@@ -121,12 +128,11 @@ public class LinkedList {
 		  while (pointer.next != null) {
 			  pointer = pointer.next;
 		  }
-		  while (pointerSecond.next != pointer.next) {
+		  while (pointerSecond.next != pointer) {
 			  pointerSecond = pointerSecond.next;
 		  }
 			if (pointer.next == null) {
-				pointerSecond.next = pointer;
-				pointer.next = null;
+				pointerSecond.next = null;
 		}
 	}
 }

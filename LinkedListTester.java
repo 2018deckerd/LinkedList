@@ -43,7 +43,7 @@ public class LinkedListTester {
 		System.out.println("SECOND LIST FROM HEAD TO TAIL...");
 		list2.traverseAndPrint();
 		System.out.println("Should be: Imogene -> Candace -> Bob ->");
-		System.out.println("Alice -> Fiona -> George -> Harry");
+		System.out.println("Fiona -> George -> Harry");
 	}
 
 }
