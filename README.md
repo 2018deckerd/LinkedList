@@ -1,2 +1,1 @@
-# LinkedList
-Program on Linked List, a robust data structure.
+# linked-list-starter
